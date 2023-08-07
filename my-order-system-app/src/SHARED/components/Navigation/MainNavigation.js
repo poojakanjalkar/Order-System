@@ -24,9 +24,9 @@ export default function MainNavigation(props) {
     <React.Fragment>
       {isSideDrawerOpen && <Backdrop onClick={closeDrawer} />}
       {isSideDrawerOpen && (
-        <SideDrawer>
+        <SideDrawer show={isSideDrawerOpen}>
           <nav className="main-navigation__drawer-nav">
-            <NavLinks></NavLinks>
+            <NavLinks> </NavLinks>
           </nav>
         </SideDrawer>
       )}
