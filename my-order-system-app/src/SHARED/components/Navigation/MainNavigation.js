@@ -26,7 +26,7 @@ export default function MainNavigation(props) {
       {isSideDrawerOpen && (
         <SideDrawer show={isSideDrawerOpen} onClick={closeDrawer}>
           <nav className="main-navigation__drawer-nav">
-            <NavLinks> </NavLinks>
+            <NavLinks />
           </nav>
         </SideDrawer>
       )}
