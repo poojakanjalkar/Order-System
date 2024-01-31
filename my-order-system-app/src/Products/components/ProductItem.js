@@ -1,6 +1,7 @@
 import React from "react";
 import "./ProductItem.css";
 import Card from "../../SHARED/UIELEMENTS/Card/Card";
+import Button from "../../SHARED/FORMELEMENTS/Button";
 
 export default function ProductItem(props) {
   return (
@@ -15,7 +16,9 @@ export default function ProductItem(props) {
           <h1>{props.price}</h1>
         </div>
         <div className="place-item__actions">
-          <button>Buy Now</button>
+          <Button inverse>Buy Now</Button>
+          <Button to={`/products/${props.id}`}>Edit</Button>
+          <Button danger>Delete</Button>
         </div>
       </Card>
     </li>
