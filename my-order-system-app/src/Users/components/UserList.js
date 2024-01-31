@@ -15,7 +15,7 @@ export default function UserList(props) {
   }
 
   return (
-    <ul className="user-item">
+    <ul className="users-list">
       {props.item.map((user) => {
         return (
           <UserItem
@@ -24,6 +24,7 @@ export default function UserList(props) {
             name={user.name}
             image={user.image}
             productCount={user.products}
+            industry={user.industry}
           />
         );
       })}

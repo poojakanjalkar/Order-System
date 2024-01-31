@@ -15,9 +15,10 @@ export default function UserItem(props) {
             </div>
             <div className="user-iem__info">
               <h2>{props.name}</h2>
+              <h3>{props.industry}</h3>
               <h3>
                 {props.productCount}{" "}
-                {props.productCount === 1 ? "product" : "products"}
+                {props.productCount === 1 ? "Product" : "Products"}
               </h3>
             </div>
           </Link>

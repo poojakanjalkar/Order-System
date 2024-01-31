@@ -8,6 +8,7 @@ export default function Users() {
       name: "Pooja",
       image: "https://teqip.in/wp-content/uploads/2022/12/kajal-agarwal.jpg",
       products: 3,
+      industry: "Fashion Retailer",
     },
   ];
   return <UserList item={USER} />;

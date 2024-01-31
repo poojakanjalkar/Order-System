@@ -7,7 +7,7 @@ export default function ProductList(props) {
   if (props.item.length == 0) {
     return (
       <Card>
-        <div>
+        <div className="center">
           <h1> No Products Found, create atleast one</h1>
         </div>
         <button>Share Product</button>
@@ -15,14 +15,15 @@ export default function ProductList(props) {
     );
   }
   return (
-    <ul>
+    <ul className="place-list">
       {props.item.map((products) => (
         <ProductItem
-          key={props.id}
-          image={props.image}
-          title={props.title}
-          price={props.price}
-          url={props.url}
+          key={products.id}
+          image={products.image}
+          title={products.title}
+          description={products.description}
+          price={products.price}
+          creatorId={products.creator}
         />
       ))}
     </ul>
