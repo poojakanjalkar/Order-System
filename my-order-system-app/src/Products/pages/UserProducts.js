@@ -1,5 +1,6 @@
 import React from "react";
 import ProductList from "../components/ProductList";
+import { useParams } from "react-router-dom";
 
 export default function UserProducts() {
   const item = [
@@ -21,9 +22,12 @@ export default function UserProducts() {
       title: "women red top",
       description:
         "Crafted from a high-quality fabric, the top offers a comfortable and breathable fit, ensuring you stay at ease throughout the day.",
-      price: "299 rs",
+      price: "1299 rs",
       creator: "u2",
     },
   ];
-  return <ProductList item={item} />;
+
+  const userId = useParams().userId;
+  const loadedProducts = item.filter((product) => product.creator === userId);
+  return <ProductList item={loadedProducts} />;
 }
