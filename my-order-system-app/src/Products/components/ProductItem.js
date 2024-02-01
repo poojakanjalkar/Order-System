@@ -17,7 +17,9 @@ export default function ProductItem(props) {
         </div>
         <div className="place-item__actions">
           <Button inverse>Buy Now</Button>
+
           <Button to={`/products/${props.id}`}>Edit</Button>
+
           <Button danger>Delete</Button>
         </div>
       </Card>
