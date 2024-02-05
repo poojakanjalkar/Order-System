@@ -1,5 +1,11 @@
 import React from "react";
+import "./NewProduct.css";
+import Input from "../../SHARED/FORMELEMENTS/Input";
 
 export default function NewProduct() {
-  return <h1>products are here</h1>;
+  return (
+    <form className="product-form">
+      <Input element="input" type="text" label="Title" />
+    </form>
+  );
 }

@@ -16,7 +16,7 @@ export default function NavLinks() {
         </NavLink>
       </li>
       <li>
-        <NavLink to="/places/new" exact activeClassName="active">
+        <NavLink to="/products/new" exact activeClassName="active">
           ADD PRODUCT
         </NavLink>
       </li>
