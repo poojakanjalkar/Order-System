@@ -16,7 +16,7 @@ export default function UserProducts() {
     },
 
     {
-      id: "1",
+      id: "2",
       image:
         "https://rukminim2.flixcart.com/image/832/832/xif0q/top/3/5/c/xs-blousetop-red-liza-fashion-original-imagwsfzz6qqbhat.jpeg?q=70&crop=true",
       title: "women red top",

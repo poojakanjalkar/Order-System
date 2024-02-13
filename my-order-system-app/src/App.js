@@ -5,6 +5,7 @@ import Users from "./Users/pages/Users";
 import UserProducts from "./Products/pages/UserProducts";
 import MainNavigation from "./SHARED/components/Navigation/MainNavigation";
 import NewProduct from "./Products/pages/NewProduct";
+import UpdateProduct from "./Products/pages/UpdateProduct";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/" exact={true} Component={Users} />
           <Route path="/products/new" Component={NewProduct} />
+          <Route path="products/new/:productId" Component={UpdateProduct} />
           <Route path="/:userId/products" exact Component={UserProducts} />
         </Routes>
       </main>
