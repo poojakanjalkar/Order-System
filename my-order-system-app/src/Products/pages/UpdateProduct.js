@@ -9,7 +9,7 @@ import Button from "../../SHARED/FORMELEMENTS/Button";
 
 const item = [
   {
-    id: "1",
+    id: "p1",
     image:
       "https://rukminim2.flixcart.com/image/832/832/xif0q/top/3/5/c/xs-blousetop-red-liza-fashion-original-imagwsfzz6qqbhat.jpeg?q=70&crop=true",
     title: "women red top",
@@ -20,7 +20,7 @@ const item = [
   },
 
   {
-    id: "2",
+    id: "p2",
     image:
       "https://rukminim2.flixcart.com/image/832/832/xif0q/top/3/5/c/xs-blousetop-red-liza-fashion-original-imagwsfzz6qqbhat.jpeg?q=70&crop=true",
     title: "women red top",
@@ -33,6 +33,8 @@ const item = [
 
 export default function UpdateProduct() {
   const productId = useParams().productId;
+
+  console.log("-----product id is ---", productId, useParams());
   const identifiedProduct = item.find((p) => p.id === productId);
 
   if (!identifiedProduct) {

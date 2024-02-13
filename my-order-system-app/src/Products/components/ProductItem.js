@@ -4,6 +4,7 @@ import Card from "../../SHARED/UIELEMENTS/Card/Card";
 import Button from "../../SHARED/FORMELEMENTS/Button";
 
 export default function ProductItem(props) {
+  console.log("---***---", props.id);
   return (
     <li className="place-item">
       <Card className="place-item__content">

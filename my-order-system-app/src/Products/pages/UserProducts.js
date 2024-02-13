@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 export default function UserProducts() {
   const item = [
     {
-      id: "1",
+      id: "p1",
       image:
         "https://rukminim2.flixcart.com/image/832/832/xif0q/top/3/5/c/xs-blousetop-red-liza-fashion-original-imagwsfzz6qqbhat.jpeg?q=70&crop=true",
       title: "women red top",
@@ -16,7 +16,7 @@ export default function UserProducts() {
     },
 
     {
-      id: "2",
+      id: "p2",
       image:
         "https://rukminim2.flixcart.com/image/832/832/xif0q/top/3/5/c/xs-blousetop-red-liza-fashion-original-imagwsfzz6qqbhat.jpeg?q=70&crop=true",
       title: "women red top",
@@ -28,6 +28,7 @@ export default function UserProducts() {
   ];
 
   const userId = useParams().userId;
+  console.log("******user id ***", userId);
   const loadedProducts = item.filter((product) => product.creator === userId);
   return <ProductList item={loadedProducts} />;
 }

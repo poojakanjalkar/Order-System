@@ -15,7 +15,7 @@ function App() {
         <Routes>
           <Route path="/" exact={true} Component={Users} />
           <Route path="/products/new" Component={NewProduct} />
-          <Route path="products/new/:productId" Component={UpdateProduct} />
+          <Route path="/products/:productId" Component={UpdateProduct} />
           <Route path="/:userId/products" exact Component={UserProducts} />
         </Routes>
       </main>
