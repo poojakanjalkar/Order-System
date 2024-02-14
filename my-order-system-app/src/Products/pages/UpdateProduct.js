@@ -5,7 +5,9 @@ import {
   VALIDATOR_MINLENGTH,
   VALIDATOR_REQUIRE,
 } from "../../SHARED/util/validators";
+import useForm from "../../SHARED/hooks/form-hooks";
 import Button from "../../SHARED/FORMELEMENTS/Button";
+import "./NewProduct.css";
 
 const item = [
   {
@@ -37,6 +39,24 @@ export default function UpdateProduct() {
   console.log("-----product id is ---", productId, useParams());
   const identifiedProduct = item.find((p) => p.id === productId);
 
+  const [formState, inputHandler] = useForm(
+    {
+      title: {
+        value: identifiedProduct.title,
+        isValid: true,
+      },
+      description: {
+        value: identifiedProduct.description,
+        isValid: true,
+      },
+      price: {
+        value: identifiedProduct.price,
+        isValid: true,
+      },
+    },
+    true
+  );
+
   if (!identifiedProduct) {
     return (
       <div className="center">
@@ -45,41 +65,46 @@ export default function UpdateProduct() {
     );
   }
 
+  const updateHandler = (event) => {
+    event.preventDefault();
+    console.log(formState.inputs);
+  };
+
   return (
-    <form>
+    <form className="product-form" onSubmit={updateHandler}>
       <Input
         id="title"
         element="input"
         label="Title"
         type="text"
-        value={identifiedProduct.title}
-        valid={true}
-        validator={[VALIDATOR_REQUIRE]}
+        value={formState.inputs.title.value}
+        valid={formState.inputs.title.isValid}
+        validators={[VALIDATOR_REQUIRE]}
         errorText="please enter valid title."
-        onInput={() => {}}
+        onInput={inputHandler}
       />
       <Input
         id="description"
         element="textarea"
         label="Description"
-        value={identifiedProduct.description}
-        valid={true}
-        validator={[VALIDATOR_MINLENGTH(5)]}
+        value={formState.inputs.description.value}
+        valid={formState.inputs.description.isValid}
+        validators={[VALIDATOR_MINLENGTH(5)]}
         errorText="please enter valid description."
-        onInput={() => {}}
+        onInput={inputHandler}
       />
       <Input
         id="description"
         element="textarea"
         label="Price"
-        value={identifiedProduct.price}
-        valid={true}
-        validator={[VALIDATOR_REQUIRE]}
+        value={formState.inputs.price.value}
+        valid={formState.inputs.price.isValid}
+        validators={[VALIDATOR_REQUIRE]}
         rows={2}
         errorText="please enter price."
-        onInput={() => {}}
+        onInput={inputHandler}
       />
-      <Button type="submit" disabled={true}>
+      <Button type="submit" disabled={!formState.isValid}>
         UPDATE PRODUCT
       </Button>
     </form>
