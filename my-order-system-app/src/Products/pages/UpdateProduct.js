@@ -8,6 +8,7 @@ import {
 import useForm from "../../SHARED/hooks/form-hooks";
 import Button from "../../SHARED/FORMELEMENTS/Button";
 import "./NewProduct.css";
+import Card from "../../SHARED/UIELEMENTS/Card/Card";
 
 const item = [
   {
@@ -71,42 +72,44 @@ export default function UpdateProduct() {
   };
 
   return (
-    <form className="product-form" onSubmit={updateHandler}>
-      <Input
-        id="title"
-        element="input"
-        label="Title"
-        type="text"
-        value={formState.inputs.title.value}
-        valid={formState.inputs.title.isValid}
-        validators={[VALIDATOR_REQUIRE]}
-        errorText="please enter valid title."
-        onInput={inputHandler}
-      />
-      <Input
-        id="description"
-        element="textarea"
-        label="Description"
-        value={formState.inputs.description.value}
-        valid={formState.inputs.description.isValid}
-        validators={[VALIDATOR_MINLENGTH(5)]}
-        errorText="please enter valid description."
-        onInput={inputHandler}
-      />
-      <Input
-        id="description"
-        element="textarea"
-        label="Price"
-        value={formState.inputs.price.value}
-        valid={formState.inputs.price.isValid}
-        validators={[VALIDATOR_REQUIRE]}
-        rows={2}
-        errorText="please enter price."
-        onInput={inputHandler}
-      />
-      <Button type="submit" disabled={!formState.isValid}>
-        UPDATE PRODUCT
-      </Button>
-    </form>
+    <Card>
+      <form className="product-form" onSubmit={updateHandler}>
+        <Input
+          id="title"
+          element="input"
+          label="Title"
+          type="text"
+          value={formState.inputs.title.value}
+          valid={formState.inputs.title.isValid}
+          validators={[VALIDATOR_REQUIRE]}
+          errorText="please enter valid title."
+          onInput={inputHandler}
+        />
+        <Input
+          id="description"
+          element="textarea"
+          label="Description"
+          value={formState.inputs.description.value}
+          valid={formState.inputs.description.isValid}
+          validators={[VALIDATOR_MINLENGTH(5)]}
+          errorText="please enter valid description."
+          onInput={inputHandler}
+        />
+        <Input
+          id="description"
+          element="textarea"
+          label="Price"
+          value={formState.inputs.price.value}
+          valid={formState.inputs.price.isValid}
+          validators={[VALIDATOR_REQUIRE]}
+          rows={2}
+          errorText="please enter price."
+          onInput={inputHandler}
+        />
+        <Button type="submit" disabled={!formState.isValid}>
+          UPDATE PRODUCT
+        </Button>
+      </form>
+    </Card>
   );
 }
