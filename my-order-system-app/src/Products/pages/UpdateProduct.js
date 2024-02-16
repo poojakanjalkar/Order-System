@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Input from "../../SHARED/FORMELEMENTS/Input";
 import {
@@ -35,28 +35,53 @@ const item = [
 ];
 
 export default function UpdateProduct() {
+  const [isLoading, setIsLoading] = useState(true);
+
   const productId = useParams().productId;
 
   console.log("-----product id is ---", productId, useParams());
-  const identifiedProduct = item.find((p) => p.id === productId);
 
-  const [formState, inputHandler] = useForm(
+  const [formState, inputHandler, setFormData] = useForm(
     {
       title: {
-        value: identifiedProduct.title,
-        isValid: true,
+        value: "",
+        isValid: false,
       },
       description: {
-        value: identifiedProduct.description,
-        isValid: true,
+        value: "",
+        isValid: false,
       },
       price: {
-        value: identifiedProduct.price,
-        isValid: true,
+        value: "",
+        isValid: false,
       },
     },
-    true
+    false
   );
+
+  const identifiedProduct = item.find((p) => p.id === productId); //here once got identified product i want to update formstate. for that added function in form hook
+
+  useEffect(() => {
+    //wrapped in useEffect to resolve infinite loop
+    setFormData(
+      {
+        title: {
+          value: identifiedProduct.title,
+          isValid: true,
+        },
+        description: {
+          value: identifiedProduct.description,
+          isValid: true,
+        },
+        price: {
+          value: identifiedProduct.price,
+          isValid: true,
+        },
+      },
+      true
+    );
+    setIsLoading(false);
+  }, [setFormData, identifiedProduct]);
 
   if (!identifiedProduct) {
     return (
@@ -70,6 +95,14 @@ export default function UpdateProduct() {
     event.preventDefault();
     console.log(formState.inputs);
   };
+
+  if (isLoading) {
+    return (
+      <div className="center">
+        <h1>Loading.....</h1>
+      </div>
+    );
+  }
 
   return (
     <Card>
