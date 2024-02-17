@@ -2,20 +2,21 @@ import React from "react";
 import Card from "../../SHARED/UIELEMENTS/Card/Card";
 import ProductItem from "./ProductItem";
 import "./ProductList.css";
+import Button from "../../SHARED/FORMELEMENTS/Button";
 
 export default function ProductList(props) {
   if (props.item.length == 0) {
     return (
-      <Card>
-        <div className="center">
-          <h1> No Products Found, create atleast one</h1>
-        </div>
-        <button>Share Product</button>
-      </Card>
+      <div className="product-list center">
+        <Card>
+          <h1>No products found create atleast one</h1>
+          <Button to="/products/new">Share Product</Button>
+        </Card>
+      </div>
     );
   }
   return (
-    <ul className="place-list">
+    <ul className="product-list">
       {props.item.map((products) => (
         <ProductItem
           key={products.id}

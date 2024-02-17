@@ -25,8 +25,8 @@ const item = [
   {
     id: "p2",
     image:
-      "https://rukminim2.flixcart.com/image/832/832/xif0q/top/3/5/c/xs-blousetop-red-liza-fashion-original-imagwsfzz6qqbhat.jpeg?q=70&crop=true",
-    title: "women red top",
+      "https://rukminim2.flixcart.com/image/832/832/xif0q/gown/i/0/w/na-m-short-sleeve-stitched-gown-femvy-na-original-imag3hyesubkhaxw.jpeg?q=70&crop=true",
+    title: "women gown",
     description:
       "Crafted from a high-quality fabric, the top offers a comfortable and breathable fit, ensuring you stay at ease throughout the day.",
     price: "1299 rs",
@@ -63,30 +63,35 @@ export default function UpdateProduct() {
 
   useEffect(() => {
     //wrapped in useEffect to resolve infinite loop
-    setFormData(
-      {
-        title: {
-          value: identifiedProduct.title,
-          isValid: true,
+    if (identifiedProduct) {
+      setFormData(
+        {
+          title: {
+            value: identifiedProduct.title,
+            isValid: true,
+          },
+          description: {
+            value: identifiedProduct.description,
+            isValid: true,
+          },
+          price: {
+            value: identifiedProduct.price,
+            isValid: true,
+          },
         },
-        description: {
-          value: identifiedProduct.description,
-          isValid: true,
-        },
-        price: {
-          value: identifiedProduct.price,
-          isValid: true,
-        },
-      },
-      true
-    );
+        true
+      );
+    }
+
     setIsLoading(false);
   }, [setFormData, identifiedProduct]);
 
   if (!identifiedProduct) {
     return (
       <div className="center">
-        <h1>Product not found</h1>
+        <Card>
+          <h1>Product not found</h1>
+        </Card>
       </div>
     );
   }
