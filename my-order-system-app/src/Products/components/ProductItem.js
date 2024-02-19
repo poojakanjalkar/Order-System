@@ -10,6 +10,15 @@ export default function ProductItem(props) {
   const handleDeleteButton = () => {
     setShowModal(true);
   };
+
+  const cancelDeleteHandler = () => {
+    setShowModal(false);
+  };
+
+  const confirmDeleteHandler = () => {
+    console.log("deleting....");
+  };
+
   console.log("---***---", props.id);
   return (
     <li className="product-item">
@@ -27,12 +36,18 @@ export default function ProductItem(props) {
           <Button to={`/products/${props.id}`}>Edit</Button>
 
           <Modal
+            show={showModal}
+            onCancel={cancelDeleteHandler}
             header="Are you sure?"
             footerClass="product-item__modal-actions"
             footer={
               <React.Fragment>
-                <Button inverse>CANCEL</Button>
-                <Button danger>DELETE</Button>
+                <Button inverse onClick={cancelDeleteHandler}>
+                  CANCEL
+                </Button>
+                <Button danger onClick={confirmDeleteHandler}>
+                  DELETE
+                </Button>
               </React.Fragment>
             }
           >
