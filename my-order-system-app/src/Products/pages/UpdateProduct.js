@@ -7,7 +7,7 @@ import {
 } from "../../SHARED/util/validators";
 import useForm from "../../SHARED/hooks/form-hooks";
 import Button from "../../SHARED/FORMELEMENTS/Button";
-import "./NewProduct.css";
+import "./UpdateProduct.css";
 import Card from "../../SHARED/UIELEMENTS/Card/Card";
 
 const item = [
@@ -110,8 +110,8 @@ export default function UpdateProduct() {
   }
 
   return (
-    <Card>
-      <form className="product-form" onSubmit={updateHandler}>
+    <Card className="product-form">
+      <form onSubmit={updateHandler}>
         <Input
           id="title"
           element="input"

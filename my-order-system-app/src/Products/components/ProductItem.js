@@ -16,6 +16,7 @@ export default function ProductItem(props) {
   };
 
   const confirmDeleteHandler = () => {
+    setShowModal(false);
     console.log("deleting....");
   };
 
