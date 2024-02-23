@@ -6,6 +6,7 @@ import UserProducts from "./Products/pages/UserProducts";
 import MainNavigation from "./SHARED/components/Navigation/MainNavigation";
 import NewProduct from "./Products/pages/NewProduct";
 import UpdateProduct from "./Products/pages/UpdateProduct";
+import Auth from "./Users/pages/Auth";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/products/new" Component={NewProduct} />
           <Route path="/products/:productId" Component={UpdateProduct} />
           <Route path="/:userId/products" exact Component={UserProducts} />
+          <Route path="/authenticate" exact Component={Auth}></Route>
         </Routes>
       </main>
     </Router>
