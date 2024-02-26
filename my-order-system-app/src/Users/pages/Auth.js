@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from "../../SHARED/UIELEMENTS/Card/Card";
 import Input from "../../SHARED/FORMELEMENTS/Input";
 import {
@@ -11,6 +11,7 @@ import Button from "../../SHARED/FORMELEMENTS/Button";
 import useForm from "../../SHARED/hooks/form-hooks";
 
 export default function Auth() {
+  const [isLoginMode, setIsLoginMode] = useState(true);
   const [formState, inputHandler] = useForm(
     {
       email: {
@@ -28,6 +29,10 @@ export default function Auth() {
   const authSubmitHandler = (event) => {
     event.preventDefault();
     console.log(formState.inputs);
+  };
+
+  const switchModeHandler = () => {
+    setIsLoginMode((prevMode) => !prevMode);
   };
 
   return (
@@ -54,9 +59,12 @@ export default function Auth() {
           onInput={inputHandler}
         />
         <Button type="submit" disabled={!formState.isValid}>
-          LOGIN
+          {isLoginMode ? "LOGIN" : "SIGNUP"}
         </Button>
       </form>
+      <Button type="submit" onClick={switchModeHandler}>
+        SWITCH TO {isLoginMode ? "SIGNUP" : "LOGIN"}
+      </Button>
     </Card>
   );
 }
