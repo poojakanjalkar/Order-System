@@ -5,6 +5,7 @@ import {
   VALIDATOR_EMAIL,
   VALIDATOR_MIN,
   VALIDATOR_MINLENGTH,
+  VALIDATOR_REQUIRE,
 } from "../../SHARED/util/validators";
 import "./Auth.css";
 import Button from "../../SHARED/FORMELEMENTS/Button";
@@ -40,6 +41,17 @@ export default function Auth() {
       <h2>Login Required</h2>
       <hr />
       <form onSubmit={authSubmitHandler}>
+        {!isLoginMode && (
+          <Input
+            id="Name"
+            element="input"
+            label="Name"
+            type="text"
+            validators={[VALIDATOR_REQUIRE()]}
+            errorText="please enter name"
+            onInput={inputHandler}
+          />
+        )}
         <Input
           id="email"
           element="input"
