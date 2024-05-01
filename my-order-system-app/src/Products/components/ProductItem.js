@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./ProductItem.css";
 import Card from "../../SHARED/UIELEMENTS/Card/Card";
 import Button from "../../SHARED/FORMELEMENTS/Button";
 import Modal from "../../SHARED/UIELEMENTS/Modal";
+// import { useContext } from "react";
+import { AuthContext } from "../../SHARED/FORMELEMENTS/context/auth-context";
 
 export default function ProductItem(props) {
   const [showModal, setShowModal] = useState(false);
+
+  const auth = useContext(AuthContext); // to disable edit delete button for unauthenticated users
 
   const handleDeleteButton = () => {
     setShowModal(true);
@@ -34,32 +38,38 @@ export default function ProductItem(props) {
         </div>
         <div className="product-item__actions">
           <Button inverse>Buy Now</Button>
-          <Button to={`/products/${props.id}`}>Edit</Button>
+          {auth.isLoggedIn && (
+            <Button to={`/products/${props.id}`}>Edit</Button>
+          )}
 
-          <Modal
-            show={showModal}
-            onCancel={cancelDeleteHandler}
-            header="Are you sure?"
-            footerClass="product-item__modal-actions"
-            footer={
-              <React.Fragment>
-                <Button inverse onClick={cancelDeleteHandler}>
-                  CANCEL
-                </Button>
-                <Button danger onClick={confirmDeleteHandler}>
-                  DELETE
-                </Button>
-              </React.Fragment>
-            }
-          >
-            <p>
-              Do you want to delete this product? Please note that this action
-              cannot be undone.
-            </p>
-          </Modal>
-          <Button danger onClick={handleDeleteButton}>
-            Delete
-          </Button>
+          {auth.isLoggedIn && (
+            <React.Fragment>
+              <Modal
+                show={showModal}
+                onCancel={cancelDeleteHandler}
+                header="Are you sure?"
+                footerClass="product-item__modal-actions"
+                footer={
+                  <React.Fragment>
+                    <Button inverse onClick={cancelDeleteHandler}>
+                      CANCEL
+                    </Button>
+                    <Button danger onClick={confirmDeleteHandler}>
+                      DELETE
+                    </Button>
+                  </React.Fragment>
+                }
+              >
+                <p>
+                  Do you want to delete this product? Please note that this
+                  action cannot be undone.
+                </p>
+              </Modal>
+              <Button danger onClick={handleDeleteButton}>
+                Delete
+              </Button>
+            </React.Fragment>
+          )}
         </div>
       </Card>
     </li>
